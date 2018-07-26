@@ -1,0 +1,51 @@
+<div th:replace="fragment/header :: header"></div> 
+<body>
+
+	
+	<div class="jumbotron text-center">
+		<div th:replace="fragment/menu :: menu"></div> 
+	</div>
+	
+	<div class="container">
+	
+		<div class="row">
+			<!-- <p th:utext="${listResults}">..!..</p> -->
+			<hr>
+		</div>
+		
+		<div class="row" th:if="${listResults != null}" >
+			<div class="col-md-1"></div>
+			<div class="col-md-10">
+				<table class="table" dt:table="true" >
+					<thead class="thead-light">
+						<tr>
+							<th>Time</th>
+							<th>KeyWord</th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody>
+
+ 						<tr th:each="item : ${listResults}">
+	 						
+	 							<td th:text="${item.key}"></td>
+	 							<td th:text="${item.value.KeyWord}"></td>
+	 							<td >
+		 							<form action="#" th:action="@{/search}" th:object="${item.value}" method="post">
+		 								<input type="submit" value="Ver" style="width: 100%"class="btn btn-primary" />
+		 							</form>
+	 							</td>
+	 						
+ 						</tr> 
+						
+					</tbody>
+				</table>
+			</div>
+			<div class="col-md-1"></div>
+		</div>
+	</div>
+
+</body>
+</html>
+
+

@@ -1,0 +1,50 @@
+<div th:replace="fragment/header :: header"></div> 
+<body>
+
+	<div class="jumbotron text-center">
+		<div th:replace="fragment/menu :: menu"></div> 
+	</div>
+
+	<div class="container">
+		
+		<div class="row">
+			<!-- <p th:utext="${message}">..!..</p> -->
+			<hr>
+		</div>
+		
+		<div class="row" th:if="${message != null}" >
+			<div class="col-md-1"></div>
+			<div class="col-md-10">
+				<table class="table" dt:table="true" >
+					<thead class="thead-light">
+						<tr>
+							<th>Title</th>
+							<th>Preço</th>
+							<th>Portes</th>
+							<th>Data de publicação</th>
+							<th>Referencia</th>
+							<th>Origem</th>
+						</tr>
+					</thead>
+					<tbody>
+
+ 						<tr th:each="SearchResultItem : ${message.ListItem}">
+ 							<td th:text="${SearchResultItem.title}"></td>
+ 							<td th:text="${SearchResultItem.price}"></td>
+ 							<td th:text="${SearchResultItem.shipping}"></td>
+ 							<td th:text="${SearchResultItem.publishDate}"></td>
+ 							<td ><a th:href="${SearchResultItem.link}">Ver</a></td>
+ 							<td th:text="${SearchResultItem.countryFrom}"></td>
+ 						</tr> 
+						
+					</tbody>
+				</table>
+			</div>
+			<div class="col-md-1"></div>
+		</div>
+	</div>
+
+</body>
+</html>
+
+
